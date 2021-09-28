@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+}
+
+// color var
+$mainColer: rgba($color: #0095dd, $alpha: 0.7);
+
+
+// mixins
+@mixin wordBg {
+    background: $mainColer;
+    @include boxShadow;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    color: #fff;
+}
+
+@mixin boxShadow {
+     box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.7),
+;
+}
+
+@mixin boxShadowCanvas {
+     box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.4),
+                -6px -2px 6px rgba(0, 0, 0, 0.4);
+}
+
+
+
+body {
+    background: url(/img/bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    @include wordBg;
+    letter-spacing: 5px;
+    font-size: 45px;
+    border-radius: 5px
+}
+
+h2 {
+    @include wordBg;
+    letter-spacing: 15px;
+}
+
+p {
+    @include wordBg;
+    text-align: center;
+}
+
+canvas {
+    background: rgb(83, 83, 83);
+    @include boxShadowCanvas;
+    display: block;
+    border-radius: 5px;
+                
+}
+
+.btn {
+    cursor: pointer;
+    border: 0;
+    padding: 10px 20px;
+    background: #000;
+    color: #fff;
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:hover {
+        background-color: #222;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+.rules-btn {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.rules {
+    position: absolute;
+    top: center;
+    left: center;
+    background: rgba($color: #333, $alpha: 0.9);
+    padding: 0 10px;
+    width: 500px;
+    line-height: 1.5;
+    transform: translateX(-1100px);
+
+    &.show {
+        transform: translateX(0);
+        transition: transform 1s ease-in-out;
+    }
+}
